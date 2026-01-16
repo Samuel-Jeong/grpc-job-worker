@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.telcoware.job_worker_app_demo.proto";
+option java_outer_classname = "WorkerProto";
+
+package worker;
+
+service WorkerService {
+  rpc AddWork(AddWorkReq) returns (AddWorkRes);
+  rpc StopWork(StopWorkReq) returns (StopWorkRes);
+}
+
+message AddWorkReq {
+  string id = 1;
+  string name = 2;
+}
+message AddWorkRes {
+  string message = 1;
+}
+
+message StopWorkReq {
+  string id = 1;
+  string name = 2;
+}
+message StopWorkRes {
+  string message = 1;
+}

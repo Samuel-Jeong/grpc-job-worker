@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 30초마다 파일 변화를 체크하여 갱신시킨다. -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <springProperty scope="context" name="LOG_LEVEL" source="logging.level.root"/>
+    <springProperty scope="context" name="LOG_DIR" source="logging.file.path"/>
+    <springProperty scope="context" name="LOG_ALL_FILE_NAME" source="logging.file.name"/>
+
+    <logger name="org.springframework" level="error"/>
+    <logger name="org.springframework.web.servlet" level="warn"/>
+    <logger name="org.apache.http.impl.conn" level="info"/>
+    <logger name="org.apache.http" level="info"/>
+    <logger name="com.amazonaws" level="info"/>
+    <logger name="software.amazon.awssdk" level="info"/>
+
+    <springProfile name="local, dev">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <pattern>
+                    %d{HH:mm:ss.SSS} [%thread] %-5level %msg%n
+                </pattern>
+            </encoder>
+        </appender>
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${user.home}/${LOG_DIR}/${LOG_ALL_FILE_NAME}.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${user.home}/${LOG_DIR}/${LOG_ALL_FILE_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!--  로그 파일을 유지 하는 개수 -->
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>
+                    %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %msg%n
+                </pattern>
+            </encoder>
+        </appender>
+
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="stg, live">
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${user.home}/${LOG_DIR}/${LOG_ALL_FILE_NAME}.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${user.home}/${LOG_DIR}/${LOG_ALL_FILE_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!--  로그 파일을 유지 하는 개수 -->
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>
+                    %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %msg%n
+                </pattern>
+            </encoder>
+        </appender>
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+</configuration>

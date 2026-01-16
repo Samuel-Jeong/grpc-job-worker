@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: capshome-job-worker-app-demo
+
+job:
+  worker:
+    thread-pool:
+      core-size: 5
+      max-size: 10
+      queue-capacity: 100
+      watermark: 90
+
+aws:
+  elasticache:
+    valkey:
+      endpoint:
+        host: "clustercfg.capshome-job-demo-cache.7csknd.apn2.cache.amazonaws.com"
+        port: 6379
+
+schedule:
+  application-info-report:
+    thread:
+      pool-size: 5
+      queue-size: 5
+  monitoring:
+    thread:
+      pool-size: 5
+      queue-size: 5
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: api
+    path: capshome/job-system/job-worker-app/logs
+
+monitoring:
+  system:
+    enable-scheduler: true
+    sample-interval-ms: 5000
+    cpu-warn: 80
+    cpu-crit: 90
+    mem-warn: 80
+    mem-crit: 90
+    disk-warn: 80
+    disk-crit: 90
+    jvm-warn: 80
+    jvm-crit: 90
+  job:
+    enable-scheduler: true

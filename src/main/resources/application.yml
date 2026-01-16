@@ -1,0 +1,64 @@
+server:
+  shutdown: graceful
+  server-header: capshome-job-worker-app-demo
+  servlet:
+    session:
+      timeout: 10m
+      tracking-modes: cookie
+    encoding:
+      force-response: true
+  tomcat:
+    threads:
+      max: 100
+      min-spare: 10
+    accept-count: 100
+    connection-timeout: 65000
+    accesslog:
+      enabled: true
+      #directory: /ADT/iotgw/log/access
+      directory: /home/ec2-user/capshome/job-system/job-worker-app/logs/access
+      prefix: access_log.
+      suffix: .log
+      #rotate: true
+      file-date-format: yyyy-MM-dd
+      #encoding: UTF-8
+      #max-days: -1
+      #rename-on-rotate: false
+      #buffered: false
+      #condition-if: name #ServletRequest.getAttribute("name") != null
+      #condition-unless: name #ServletRequest.getAttribute("name") == null
+      pattern: '%h %l %u [%{yyyy-MM-dd:HH:mm:ss}t] "%r" %s %b %D %{User-Agent}i' #'%h %l %u %t "%r" %s %b'
+      condition-unless: NO-LOG
+  port: -1
+
+spring:
+  main:
+    web-application-type: NONE # HTTP 컨텍스트 비활성화
+  profiles:
+    active: ${PROFILE}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: stg
+
+---
+spring:
+  config:
+    activate:
+      on-profile: live
+
+---
