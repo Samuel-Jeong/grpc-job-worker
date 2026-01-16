@@ -27,7 +27,7 @@ CAPSHOME Job Worker 애플리케이션 데모 프로젝트입니다. 단독으�
 ```
 / (project root)
 ├─ build.gradle, settings.gradle
-├─ src/main/java/com/telcoware/job_worker_app_demo
+├─ src/main/java/com/dovaj/job_worker_app_demo
 │  ├─ JobWorkerAppDemoApplication.java
 │  ├─ config
 │  │  ├─ AwsElasticacheConfig.java
