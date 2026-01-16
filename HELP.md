@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.telcoware.job-worker-app-demo' is invalid and this project uses 'com.telcoware.job_worker_app_demo' instead.
+* The original package name 'com.dovaj.job-worker-app-demo' is invalid and this project uses 'com.dovaj.job_worker_app_demo' instead.
 
 # Getting Started
 
