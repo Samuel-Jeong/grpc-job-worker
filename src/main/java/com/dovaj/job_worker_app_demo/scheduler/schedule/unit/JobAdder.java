@@ -6,7 +6,7 @@ import com.dovaj.job_worker_app_demo.scheduler.schedule.handler.JobScheduler;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.schedule.unit
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.schedule.unit
  * fileName       : JobAdder
  * author         : samuel
  * date           : 24. 8. 5.

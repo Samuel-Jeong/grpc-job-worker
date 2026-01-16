@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
- * packageName    : package com.capshome.iotgw.scheduler.schedule.handler
+ * packageName    : package com.dovaj.job_worker_app_demo.scheduler.schedule.handler
  * fileName       : JobExecutor
  * author         : samuel
  * date           : 24. 8. 5.

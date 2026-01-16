@@ -1,6 +1,6 @@
 server:
   shutdown: graceful
-  server-header: capshome-job-worker-app-demo
+  server-header: dovaj-job-worker-app-demo
   servlet:
     session:
       timeout: 10m
@@ -16,7 +16,7 @@ server:
     accesslog:
       enabled: true
       #directory: /ADT/iotgw/log/access
-      directory: /home/ec2-user/capshome/job-system/job-worker-app/logs/access
+      directory: /home/ec2-user/dovaj/job-system/job-worker-app/logs/access
       prefix: access_log.
       suffix: .log
       #rotate: true

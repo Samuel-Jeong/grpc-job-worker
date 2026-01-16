@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ================== 필수: 서비스 홈 ==================
 # 이 값만 인스턴스마다 다르게 두면 다중 실행 가능(폴더 분리)
-SERVICE_HOME="${SERVICE_HOME:-/home/ec2-user/capshome/job-system/job-worker-app}"
+SERVICE_HOME="${SERVICE_HOME:-/home/ec2-user/dovaj/job-system/job-worker-app}"
 CONFIG_PATH=${SERVICE_HOME}/config/
 
 # ================== 기본 설정 ==================

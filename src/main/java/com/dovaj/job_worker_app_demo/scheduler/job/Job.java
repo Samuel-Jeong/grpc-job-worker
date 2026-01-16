@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.job
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.job
  * fileName       : Job
  * author         : samuel
  * date           : 24. 8. 5.

@@ -4,7 +4,7 @@ import com.dovaj.job_worker_app_demo.scheduler.job.Job;
 import com.dovaj.job_worker_app_demo.scheduler.schedule.handler.JobScheduler;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.schedule.unit
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.schedule.unit
  * fileName       : ScheduleUnit
  * author         : samuel
  * date           : 24. 8. 5.

@@ -1,6 +1,6 @@
 # job-worker-app-demo
 
-CAPSHOME Job Worker 애플리케이션 데모 프로젝트입니다. 단독으로 동작하는 gRPC 기반 워커 프로세스로, 자체 스케줄러를 통해 주기 작업을 실행하고, AWS ElastiCache(Valkey/Redis 호환)를 사용해 워커 상태를 공유/보고합니다.
+Job Worker 애플리케이션 데모 프로젝트입니다. 단독으로 동작하는 gRPC 기반 워커 프로세스로, 자체 스케줄러를 통해 주기 작업을 실행하고, AWS ElastiCache(Valkey/Redis 호환)를 사용해 워커 상태를 공유/보고합니다.
 
 ## 주요 기능
 - gRPC 서버 제공: `worker.WorkerService/SendWork` RPC 수신
@@ -99,7 +99,7 @@ $SERVICE_HOME/
 ```
 - 환경 변수 예시
 ```
-export SERVICE_HOME=/home/ec2-user/capshome/job-system/job-worker-app
+export SERVICE_HOME=/home/ec2-user/dovaj/job-system/job-worker-app
 export PROFILES_ACTIVE=live   # 또는 dev/stg/local
 ```
 - 실행/중지/상태

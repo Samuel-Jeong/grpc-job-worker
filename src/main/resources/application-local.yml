@@ -1,6 +1,6 @@
 spring:
   application:
-    name: capshome-job-worker-app-demo
+    name: dovaj-job-worker-app-demo
 
 job:
   worker:
@@ -14,7 +14,7 @@ aws:
   elasticache:
     valkey:
       endpoint:
-        host: "clustercfg.capshome-job-demo-cache.7csknd.apn2.cache.amazonaws.com"
+        host: "clustercfg.dovaj-job-demo-cache.7csknd.apn2.cache.amazonaws.com"
         port: 6379
 
 schedule:
@@ -32,7 +32,7 @@ logging:
     root: INFO
   file:
     name: api
-    path: capshome/job-system/job-worker-app/logs
+    path: dovaj/job-system/job-worker-app/logs
 
 monitoring:
   system:

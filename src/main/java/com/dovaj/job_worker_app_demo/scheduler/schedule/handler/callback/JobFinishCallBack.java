@@ -1,7 +1,7 @@
 package com.dovaj.job_worker_app_demo.scheduler.schedule.handler.callback;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.schedule.handler.callback
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.schedule.handler.callback
  * fileName       : JobFinishCallBack
  * author         : samuel
  * date           : 24. 8. 5.

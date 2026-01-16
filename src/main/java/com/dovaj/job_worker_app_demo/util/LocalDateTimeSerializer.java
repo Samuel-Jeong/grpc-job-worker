@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * packageName    : com.capshome.iotgw.utils
+ * packageName    : com.dovaj.job_worker_app_demo.utils
  * fileName       : LocalDateTimeSerializer
  * author         : samuel
  * date           : 24. 8. 5.

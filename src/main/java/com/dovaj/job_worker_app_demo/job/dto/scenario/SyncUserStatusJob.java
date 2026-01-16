@@ -7,23 +7,23 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * packageName    : com.dovaj.job_master_app_demo.job.dto.impl
- * fileName       : SosFleetIndexingSchedulerDevJob
+ * fileName       : SyncUserStatusJob
  * author         : samuel
  * date           : 25. 10. 22.
- * description    : SOS 비상버튼 단선체크 람다 스케줄러 (개발) 작업 클래스
+ * description    : 사용자 상태 동기화 작업 클래스
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 25. 10. 22.        samuel       최초 생성
  */
 @Slf4j
-public class SosFleetIndexingSchedulerDevJob extends JobInfo<JobInfoDto> {
+public class SyncUserStatusJob extends JobInfo<JobInfoDto> {
 
-    public SosFleetIndexingSchedulerDevJob(String workerId,
-                                           String jobId,
-                                           String jobName,
-                                           Long initialDelayMillis,
-                                           JobReporter jobReporter) {
+    public SyncUserStatusJob(String workerId,
+                             String jobId,
+                             String jobName,
+                             Long initialDelayMillis,
+                             JobReporter jobReporter) {
         super(workerId, jobId, jobName, JobInfoDto.class, jobReporter);
 
         this.setInitialDelayMillis(initialDelayMillis);
@@ -32,16 +32,16 @@ public class SosFleetIndexingSchedulerDevJob extends JobInfo<JobInfoDto> {
     @Override
     public void process() {
         try {
-            log.info("Starting SosFleetIndexingSchedulerDevJob");
+            log.info("Starting SyncUserStatusJob");
 
             /////////////////////////////////////
             // TODO TEST
             Thread.sleep(5000);
             /////////////////////////////////////
 
-            log.info("SUCCESS to finish SosFleetIndexingSchedulerDevJob");
+            log.info("SUCCESS to finish SyncUserStatusJob");
         } catch (Exception e) {
-            log.warn("->SVC::[SosFleetIndexingSchedulerDevJob] [Exception] {}", e.getMessage());
+            log.warn("->SVC::[SyncUserStatusJob] [Exception] {}", e.getMessage());
         }
     }
 

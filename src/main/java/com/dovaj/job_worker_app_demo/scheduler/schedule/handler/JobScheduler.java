@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.schedule.handler
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.schedule.handler
  * fileName       : JobScheduler
  * author         : samuel
  * date           : 24. 8. 5.

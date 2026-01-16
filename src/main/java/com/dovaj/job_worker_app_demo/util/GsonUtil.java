@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * packageName    : com.capshome.iotgw.utils
+ * packageName    : com.dovaj.job_worker_app_demo.utils
  * fileName       : GsonUtil
  * author         : samuel
  * date           : 24. 8. 5.

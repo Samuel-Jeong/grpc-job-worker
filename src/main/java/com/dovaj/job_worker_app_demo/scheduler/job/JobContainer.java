@@ -1,7 +1,7 @@
 package com.dovaj.job_worker_app_demo.scheduler.job;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.job
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.job
  * fileName       : JobContainer
  * author         : samuel
  * date           : 24. 8. 5.

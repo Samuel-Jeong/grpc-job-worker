@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * packageName    : com.capshome.iotgw.scheduler.schedule
+ * packageName    : com.dovaj.job_worker_app_demo.scheduler.schedule
  * fileName       : ScheduleManager
  * author         : samuel
  * date           : 24. 8. 5.
