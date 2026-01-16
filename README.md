@@ -2,6 +2,55 @@
 
 Job Worker 애플리케이션 데모 프로젝트입니다. 단독으로 동작하는 gRPC 기반 워커 프로세스로, 자체 스케줄러를 통해 주기 작업을 실행하고, AWS ElastiCache(Valkey/Redis 호환)를 사용해 워커 상태를 공유/보고합니다.
 
+---
+
+## 워커 내부 구조(gRPC 서버 + 실행기 + 상태보고)
+```mermaid
+flowchart TB
+  subgraph WorkerInner["grpc-job-worker 내부"]
+    INIT["InitService<br/>- gRPC 포트 선택<br/>- PodInfo 초기 등록"]
+    GS["GrpcServerService<br/>- 서버 build / start / stop"]
+    IMPL["WorkerGrpcServiceImpl<br/>- SendWork 구현"]
+    WM["JobMaster<br/>+ ThreadPoolTaskExecutor<br/>- 작업 실행<br/>- watermark 기반 IDLE / BUSY"]
+    SM["ScheduleManager<br/>- 내장 스케줄러"]
+    JOB["ApplicationInfoReportJob<br/>(예: 5초 간격)<br/>- Redis에 상태 갱신"]
+    REDIS["AwsValKeyService (Lettuce)<br/>- Redis 연결<br/>- 저장 / 스캔"]
+
+    INIT --> GS
+    GS --> IMPL --> WM
+    INIT --> SM --> JOB --> REDIS
+    INIT --> REDIS
+  end
+```
+
+## 호출 흐름(시퀀스 다이어그램)
+```mermaid
+sequenceDiagram
+  autonumber
+  participant C as Client
+  participant M as Master (REST)
+  participant S as JobScheduler
+  participant E as JobExecutor
+  participant Gc as GrpcClientService
+  participant W as Worker (gRPC Server)
+  participant R as Redis (Valkey)
+
+  C->>M: POST /v1/api/grpc/work
+  M->>S: schedule(Job)<br/>또는 즉시 실행 트리거
+  S->>E: Round-Robin 분배<br/>작업 전달
+  E->>Gc: gRPC 호출 준비
+  Gc->>W: SendWork(req)
+  W->>W: 작업 처리<br/>(ThreadPool)
+  W->>R: PodInfo 상태 저장 / 갱신<br/>(TTL)
+  W-->>Gc: SendWorkRes
+  Gc-->>E: 실행 결과 반환
+  E-->>S: 실행 완료 콜백
+  S-->>M: 처리 결과 반영
+  M-->>C: HTTP 응답
+```
+
+---
+
 ## 주요 기능
 - gRPC 서버 제공: `worker.WorkerService/SendWork` RPC 수신
 - 자체 스케줄러 내장: 스레드 풀 기반 작업 실행 및 주기 작업 관리
